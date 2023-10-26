@@ -2677,14 +2677,24 @@ input, select, textarea {
 			-ms-order: 1;
 			order: 1;
 			border-radius: 0;
-			width: 40%;
+			width: 100%;
 		}
 
 			.spotlight .image img {
 				border-radius: 0;
 				width: 100%;
 			}
-
+			.spotlight .Title {
+				padding: 2em 4em 0.1em 4em ;
+				-moz-order: 2;
+				-webkit-order: 2;
+				-ms-order: 2;
+				order: 2;
+				max-width: 48em;
+				width: 30%;
+				background-color: #4e4852;
+				text-align: center;
+			}
 		.spotlight .content {
 			padding: 2em 4em 0.1em 4em ;
 			-moz-order: 2;
@@ -4132,3 +4142,108 @@ input, select, textarea {
 			.box.person .image img {
 				max-width: 100%;
 			}
+
+
+/*************************************************************************************/
+.container{
+	display: flex;
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding: 1.5rem 0;
+
+	flex-wrap: wrap;
+	row-gap: 1rem;
+	column-gap: 1rem;
+	
+    justify-content: center; /* Centra verticalmente */
+} 
+.card{
+	position: relative;
+	flex: 0 0 409px;
+	height: 550px;
+	overflow: hidden;
+	margin-left: 1.5rem;
+	border-radius: 18px;
+	box-shadow: 
+	2px 4px 12px
+	rgba(0, 0, 0, 0.08);
+}
+.image{
+	margin-top: 35%;
+	width: 100%;
+	height: 80%;
+}
+.body{
+	position: absolute;
+	top: 0;
+	padding: 2px;
+	font-family: "San Francisco";
+	font-weight: 600;
+}
+.Title{
+	font-size: 0.75rem;
+	margin-bottom: 1rem;
+}
+.link{
+	font-size: 1.3rem;
+}.text{
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+#imagen-ampliada {
+    display: none;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+    position: fixed;         /* Fija el modal sobre todo el contenido */
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente negro */
+    padding-top: 3%;       /* Margen superior dentro del fondo semi-transparente */
+    text-align: center;
+  }
+
+#imagen-ampliada-img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#imagen-ampliada-src {
+    max-width: 80%;  /* Para que la imagen no ocupe más del 80% del ancho de la ventana */
+    max-height: 80%; /* Para que la imagen no ocupe más del 80% de la altura de la ventana */
+}
+.boton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.boton.anterior {
+    left: 10px;
+}
+
+.boton.siguiente {
+    right: 10px;
+}
+
+
+
+.cerrar {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    font-size: 30px;
+    cursor: pointer;
+}
