@@ -1,0 +1,39 @@
+name: CI-SFTP
+ 
+# Controla cuándo se ejecutará la acción.
+on:
+  # Activa el workflow en eventos push o pull request pero sólo para la rama que elijas.
+  push:
+    branches: [ main ]
+ # pull_request:
+   # branches: [ main ]
+ 
+  # workflow_dispatch: Le permite ejecutar este workflow manualmente desde la pestaña Acciones.
+  workflow_dispatch:
+ 
+# Un workflow se compone de uno o varios jobs que pueden ejecutarse de forma secuencial o en paralelo.
+jobs:
+  # Este workflow contiene un solo job llamado "SFTP".
+  deploy-via-sftp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.1
+        with:
+          # username: Nombre de usuario con el cual nos conectaremos al servidor.
+          username: ubuntu
+          # server: Nombre del servidor o IP.
+          server: espiadimonismollet.ddns.net
+          port: 22 
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          # local_path: Ruta dentro del repositorio la cual quieres copiar en el servidor,por defecto es ./*
+          local_path: ./*
+          
+          # remote_path: Ruta remota donde se copiaran los archivos del repositorio.
+          remote_path: /var/www/espiadimonisdemollet/
+          
+          # SFTP args
+          args: '-o ConnectTimeout=5'
